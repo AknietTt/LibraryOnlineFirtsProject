@@ -4,43 +4,50 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+/**
+ * @author Neil Alishev
+ */
 public class Person {
+    private int id;
 
+    @NotEmpty(message = "Имя не должно быть пустым")
+    @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
+    private String fullName;
 
-    private int personId;
-    @NotEmpty(message = "Name should not be empty")
-    @Size(min = 2, max = 30, message = "Name should be between 2 and 30 characters")
-    private String FIO;
+    @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
+    private int yearOfBirth;
 
-    private int yearBirth;
+    // Конструктор по умолчанию нужен для Spring
+    public Person() {
 
-    public Person(int personId, String fio,int yearBirth){
-        this.personId = personId;
-        this.FIO =fio;
-        this.yearBirth = yearBirth;
-    }
-    public Person(){}
-    public int getPersonId() {
-        return personId;
     }
 
-    public void setPersonId(int personId) {
-        this.personId = personId;
+    public Person(String fullName, int yearOfBirth) {
+        this.fullName = fullName;
+        this.yearOfBirth = yearOfBirth;
     }
 
-    public String getFIO() {
-        return FIO;
+    public int getId() {
+        return id;
     }
 
-    public void setFIO(String FIO) {
-        this.FIO = FIO;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public int getYearBirth() {
-        return yearBirth;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setYearBirth(int yearBirth) {
-        this.yearBirth = yearBirth;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public int getYearOfBirth() {
+        return yearOfBirth;
+    }
+
+    public void setYearOfBirth(int yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
     }
 }
