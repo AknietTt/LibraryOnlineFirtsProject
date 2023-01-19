@@ -17,7 +17,7 @@ public class Person {
     @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
     private int yearOfBirth;
 
-    // Конструктор по умолчанию нужен для Spring
+
     public Person() {
 
     }

@@ -43,10 +43,8 @@ public class BookDAO {
     public void delete(int id) {
         jdbcTemplate.update("DELETE FROM Book WHERE id=?", id);
     }
-
-    // Join'им таблицы Book и Person и получаем человека, которому принадлежит книга с указанным id
     public Optional<Person> getBookOwner(int id) {
-        // Выбираем все колонки таблицы Person из объединенной таблицы
+
         return jdbcTemplate.query("SELECT Person.* FROM Book JOIN Person ON Book.person_id = Person.id " +
                         "WHERE Book.id = ?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class))
                 .stream().findAny();
