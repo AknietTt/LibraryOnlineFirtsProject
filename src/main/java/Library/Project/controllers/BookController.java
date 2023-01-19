@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Optional;
 
-
+@Controller
 @RequestMapping("/books")
 public class BookController {
     private final BookDAO bookDAO;
@@ -47,6 +47,7 @@ public class BookController {
 
     @GetMapping("/new")
     public String newBook(@ModelAttribute("book") Book Book) {
+
         return "books/new";
     }
 
